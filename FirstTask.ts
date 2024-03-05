@@ -6,6 +6,7 @@ import * as fs from 'fs';
 //npm init => for the crate the package.json file => for assess the outside modules
 //node FirstTask.js => it is not used in the package.json => "type":"module";
 
+//.............................(task 3).................................
 
 //reading the file op.json and perform some operation
 const math = ():Promise<object> => {      //it returns the Promise<object>

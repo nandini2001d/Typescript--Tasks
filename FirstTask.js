@@ -40,19 +40,22 @@ var fs = require("fs");
 // this is the first task of the taypescript file
 //npm i D @types/node => this is imp for the using the modules in the typescript
 //npm init => for the crate the package.json file => for assess the outside modules
-//node FirstTask.js => it is not used in the package.json
+//node FirstTask.js => it is not used in the package.json => "type":"module";
+//reading the file op.json and perform some operation
 var math = function () {
     return new Promise(function (res, rej) {
         var fileRead = fs.readFileSync("./op.json", "utf8");
         //console.log(fileRead);
-        var fileOb = JSON.parse(fileRead);
+        var fileOb = JSON.parse(fileRead); // it convert json format to object
         //console.log('fileOp',fileOb,typeof fileOb);
+        //cheked that val1 and val2 keys are available in the op.json file 
         if (!('val1' in fileOb)) {
             rej("val1 is not found");
         }
         if (!('val2' in fileOb)) {
             rej("val2 is not found");
         }
+        //some operations on the add,sub,mul,div => and stored the new value
         switch ((fileOb.add && fileOb.sub && fileOb.mul && fileOb.div) || fileOb.add || fileOb.sub || fileOb.mul || fileOb.div) {
             case 'operator':
                 if (('add' in fileOb) && ('sub' in fileOb) && ('mul' in fileOb) && ("div" in fileOb)) {
@@ -79,13 +82,16 @@ var math = function () {
         res(fileOb);
     });
 };
+//writing in the op.jeson 
 var writeFile = function (output) {
     var writeoutput = {
         output: output
     };
-    var write = fs.writeFileSync('./op.json', JSON.stringify(writeoutput));
+    var write = fs.writeFileSync('./op.json', JSON.stringify(writeoutput)); // it convert object to json format
     //console.log('write', write);
 };
+//these is the main function where we can call all functions 
+//above function is not return any thing but it is async() function so it convert the promise into object so thats way => Promise<object>
 var main = function () { return __awaiter(void 0, void 0, void 0, function () {
     var filedisply, error_1;
     return __generator(this, function (_a) {
@@ -95,8 +101,8 @@ var main = function () { return __awaiter(void 0, void 0, void 0, function () {
                 return [4 /*yield*/, math()];
             case 1:
                 filedisply = _a.sent();
-                console.log(filedisply, typeof filedisply);
-                writeFile(filedisply);
+                console.log(filedisply, typeof filedisply); // it display the result
+                writeFile(filedisply); // static typescrept is void
                 return [3 /*break*/, 3];
             case 2:
                 error_1 = _a.sent();
@@ -106,4 +112,4 @@ var main = function () { return __awaiter(void 0, void 0, void 0, function () {
         }
     });
 }); };
-main();
+main(); // static typescrept is Promise<void>
