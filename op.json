@@ -1,6 +1,8 @@
 {
     "val1":70,
     "val2":60,
+    "add":"operator",
+    "sub":"operator",
     "mul":"operator",
     "div":"operator"
    

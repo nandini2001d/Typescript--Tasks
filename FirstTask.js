@@ -84,18 +84,25 @@ var writeFile = function (output) {
         output: output
     };
     var write = fs.writeFileSync('./op.json', JSON.stringify(writeoutput));
-    console.log('write', write);
+    //console.log('write', write);
 };
 var main = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var filedisply;
+    var filedisply, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, math()];
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, math()];
             case 1:
                 filedisply = _a.sent();
-                console.log(filedisply);
+                console.log(filedisply, typeof filedisply);
                 writeFile(filedisply);
-                return [2 /*return*/];
+                return [3 /*break*/, 3];
+            case 2:
+                error_1 = _a.sent();
+                console.log('errer', error_1);
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
         }
     });
 }); };
